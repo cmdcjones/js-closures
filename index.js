@@ -43,3 +43,19 @@ stringOne.foo();
 stringOne.bar();
 stringOne.baz();
 console.log(stringOne.print());
+
+// very messy but still a closure!
+// each returned function can be invoked by passing arguments
+// in parenthesis with respect to the function order
+function collectAllStrings(strOne) {
+    return function (strTwo) {
+        return function (strThree) {
+            return function (strFour) {
+                return strOne + strTwo + strThree + strFour;
+            };
+        };
+    };
+}
+
+// console logs "i am a closure!"
+console.log(collectAllStrings("i ")("am ")("a ")("closure!"));
